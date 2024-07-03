@@ -1,0 +1,55 @@
+.markdown-tabbar-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.markdown-tabbar-tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #8881;
+  border-radius: .25rem;
+  gap: .5rem;
+  overflow-x: auto;
+  padding: .5rem;
+}
+
+button.markdown-tabbar-tab {
+  outline: none;
+  border: none;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #888;
+  border-radius: .25rem;
+  background-color: transparent;
+  white-space: nowrap;
+}
+
+button.markdown-tabbar-active {
+  color: #222;
+  background-color: #8884;
+}
+
+button.markdown-tabbar-tab:not(.markdown-tabbar-active):hover {
+  color: #444;
+  background-color: #8882;
+}
+
+.dark button.markdown-tabbar-active {
+  color: #ddd;
+  background-color: #8884;
+}
+
+.dark button.markdown-tabbar-tab:not(.markdown-tabbar-active):hover {
+  color: #ccc;
+  background-color: #8882;
+}
+
+.markdown-tabbar-block.markdown-tabbar-active {
+  display: block;
+}
+
+.markdown-tabbar-block:not(.markdown-tabbar-active) {
+  display: none;
+}
