@@ -38,7 +38,9 @@ const MarkdownItTabbar: MarkdownIt.PluginWithOptions<MarkdownItTabbarOptions> = 
   } = options ?? {}
 
   const tabbar: MarkdownIt.ParserBlock.RuleBlock = (state, startLine, endLine, silent) => {
-    if (mark.length !== 1 || min < 1 || name.length < 1) { return false }
+    if (mark.length !== 1 || min < 1 || name.length < 1) {
+      return false
+    }
 
     let auto_closed = false
 
@@ -49,9 +51,13 @@ const MarkdownItTabbar: MarkdownIt.PluginWithOptions<MarkdownItTabbarOptions> = 
 
     const line = state.src.slice(start, max)
     const match = line.match(bRegex)
-    if (!match) { return false }
+    if (!match) {
+      return false
+    }
     const count = match[1].length
-    if (silent) { return true }
+    if (silent) {
+      return true
+    }
 
     let nextLine = startLine
     const eRegex = new RegExp(`^(${mark}{${count}})\\s*$`)
@@ -59,12 +65,18 @@ const MarkdownItTabbar: MarkdownIt.PluginWithOptions<MarkdownItTabbarOptions> = 
       start = state.bMarks[nextLine] + state.tShift[nextLine]
       max = state.eMarks[nextLine]
 
-      if (start < max && state.sCount[nextLine] < state.blkIndent) { break }
-      if (state.sCount[nextLine] - state.blkIndent >= 4) { continue }
+      if (start < max && state.sCount[nextLine] < state.blkIndent) {
+        break
+      }
+      if (state.sCount[nextLine] - state.blkIndent >= 4) {
+        continue
+      }
 
       const line = state.src.slice(start, max)
       const match = line.match(eRegex)
-      if (!match) { continue }
+      if (!match) {
+        continue
+      }
 
       auto_closed = true
       break
@@ -83,9 +95,13 @@ const MarkdownItTabbar: MarkdownIt.PluginWithOptions<MarkdownItTabbarOptions> = 
       max = state.eMarks[nextLine]
 
       const line = state.src.slice(start, max)
-      if (line.trim().length === 0) { continue }
+      if (line.trim().length === 0) {
+        continue
+      }
       const match = line.match(tRegex)
-      if (!match) { continue }
+      if (!match) {
+        continue
+      }
       group.length > 0 && (group[group.length - 1].end = nextLine)
       group.push({
         title: match[1],
