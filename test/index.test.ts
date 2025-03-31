@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import base from '../styles/base.css?raw'
 import markdown from './markdown.css?raw'
 import md from './markdown'
@@ -8,7 +8,7 @@ import md from './markdown'
 describe('index', () => {
   Object.entries(import.meta.glob(
     './input/*.md',
-    { query: '?raw', import: 'default', eager: true }
+    { query: '?raw', import: 'default', eager: true },
   )).forEach(([path, content]) => {
     it(`render ${path}`, async () => {
       const rendered = [
@@ -24,8 +24,8 @@ describe('index', () => {
       ].join('\n').trim().replace(/\r\n/g, '\n')
       await expect(rendered)
         .toMatchFileSnapshot(
-          path.replace('input', 'output').replace('.md', '.html')
+          path.replace('input', 'output').replace('.md', '.html'),
         )
     })
   })
-});
+})
