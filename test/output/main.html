@@ -1,0 +1,108 @@
+<h1>MarkdownIt Tabbar</h1>
+<div class="markdown-tabbar-container"><div class="markdown-tabbar-tabs"><button class="markdown-tabbar-tab markdown-tabbar-active">bold</button><button class="markdown-tabbar-tab">italic</button><button class="markdown-tabbar-tab">code</button><button class="markdown-tabbar-tab">quote</button></div><div class="markdown-tabbar-blocks"><div class="markdown-tabbar-block markdown-tabbar-active"><p>** This is a bold text. **</p>
+</div><div class="markdown-tabbar-block"><ul>
+<li>This is an italic text. *</li>
+</ul>
+</div><div class="markdown-tabbar-block"><p><code>This is a code text.</code></p>
+</div><div class="markdown-tabbar-block"><blockquote>
+<p>This is a quote text.</p>
+</blockquote>
+</div></div></div>
+<style>
+.shiki {
+  font-family: 'DM Mono', 'Input Mono', 'Fira Code', monospace;
+  border-radius: .2em;
+  font-size: .92rem;
+  line-height: 1.8;
+  padding: 1.2em;
+  margin: .5em 0;
+  overflow: scroll;
+}
+
+html .shiki,
+html .shiki span {
+  color: var(--shiki-light) !important;
+  background-color: #ddd !important;
+  --twoslash-popup-bg: #fafafa;
+  background-color: var(--shiki-light-bg) !important;
+  font-style: var(--shiki-font-style) !important;
+  font-weight: var(--shiki-font-weight) !important;
+  text-decoration: var(--shiki-text-decoration) !important;
+}
+
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: #222 !important;
+  --twoslash-popup-bg: #191919;
+  --twoslash-border-color: #8884;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+html.dark {
+  background-color: #222;
+  color: #ddd;
+}
+.markdown-tabbar-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.markdown-tabbar-tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #8881;
+  border-radius: .25rem;
+  gap: .5rem;
+  overflow-x: auto;
+  padding: .5rem;
+}
+
+button.markdown-tabbar-tab {
+  outline: none;
+  border: none;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #888;
+  border-radius: .25rem;
+  background-color: transparent;
+  white-space: nowrap;
+}
+
+button.markdown-tabbar-active {
+  color: #222;
+  background-color: #8884;
+}
+
+button.markdown-tabbar-tab:not(.markdown-tabbar-active):hover {
+  color: #444;
+  background-color: #8882;
+}
+
+.dark button.markdown-tabbar-active {
+  color: #ddd;
+  background-color: #8884;
+}
+
+.dark button.markdown-tabbar-tab:not(.markdown-tabbar-active):hover {
+  color: #ccc;
+  background-color: #8882;
+}
+
+.markdown-tabbar-block.markdown-tabbar-active {
+  display: block;
+}
+
+.markdown-tabbar-block:not(.markdown-tabbar-active) {
+  display: none;
+}
+</style>
+<script type="module">
+import { useTabbar } from '/dist/index.mjs'
+useTabbar()
+</script>
